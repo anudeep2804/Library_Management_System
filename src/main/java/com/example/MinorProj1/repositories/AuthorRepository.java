@@ -22,4 +22,5 @@ public interface AuthorRepository extends JpaRepository<Author,Integer> {
 
     List<Author> findByAgeGreaterThanEqualAndCountryAndNameStartingWith
             (int age, String country, String prefix);
+
 }
