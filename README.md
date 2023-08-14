@@ -3,6 +3,8 @@
 # LMS Project (Learning Management System)
 The LMS Project is an application that aims to manage students, books, and the transactions between them, such as issuing and returning books. It comprises multiple modules, each serving specific functionalities within the system.
 
+I have also implemented Spring Security and Redis for Caching , make sure to up your MySQL and redis servers while starting the application 
+
 Table of Contents
 Features
 API Endpoints
