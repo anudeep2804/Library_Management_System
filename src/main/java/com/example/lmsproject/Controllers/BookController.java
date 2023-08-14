@@ -12,23 +12,35 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * This controller handles HTTP requests related to Book operations.
+ */
 @RestController
 public class BookController {
 
+    // Service for interacting with Book related data.
     @Autowired
     BookService bookService;
 
+    /**
+     * Endpoint to create or update a book.
+     * @param bookCreateRequest The request payload containing book details.
+     */
     @PostMapping("/book")
     public void createBook(@Valid @RequestBody BookCreateRequest bookCreateRequest){
         bookService.createOrUpdate(bookCreateRequest);
     }
 
-    // GET - filter functionality / search
+    /**
+     * Endpoint to search for books based on a filter and value.
+     * @param bookFilterType The type of filter (e.g., author, title).
+     * @param value The value to search for.
+     * @return A list of books matching the search criteria.
+     */
     @GetMapping("/books/search")
     public List<BookSearchResponse> findBooks(
             @RequestParam("filter")BookFilterType bookFilterType,
             @RequestParam("value") String value){
-
         return bookService
                 .findByCriteria(bookFilterType, value)
                 .stream()
@@ -36,12 +48,18 @@ public class BookController {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Enhanced search endpoint considering both filter type and an operation type.
+     * @param bookFilterType The type of filter.
+     * @param value The value to search for.
+     * @param bookSearchOperationType The type of operation (e.g., EQUALS, LIKE).
+     * @return A list of books matching the search criteria.
+     */
     @GetMapping("/books/search/robust")
     public List<BookSearchResponse> findBooks2(
             @RequestParam("filter")BookFilterType bookFilterType,
             @RequestParam("value") String value,
             @RequestParam("bookSearchOperationType") BookSearchOperationType bookSearchOperationType){
-
         return bookService
                 .findByCriteriaandOpstype(bookFilterType, value, bookSearchOperationType)
                 .stream()
@@ -49,12 +67,18 @@ public class BookController {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Advanced search endpoint considering multiple filters and operation types.
+     * @param bookFilterType The list of filter types.
+     * @param value The list of values to search for.
+     * @param bookSearchOperationType The list of operation types.
+     * @return A list of books matching the search criteria.
+     */
     @GetMapping("/books/search/robust2")
     public List<BookSearchResponse> findBooks3(
             @RequestParam("filter")List<BookFilterType> bookFilterType,
             @RequestParam("value") List<String> value,
             @RequestParam("bookSearchOperationType") List<BookSearchOperationType> bookSearchOperationType){
-
         return bookService
                 .findByCriteriaandOpstype(bookFilterType, value, bookSearchOperationType)
                 .stream()
@@ -62,6 +86,5 @@ public class BookController {
                 .collect(Collectors.toList());
     }
 
-    // author/search
-
+    // Placeholder for future author search functionality
 }
