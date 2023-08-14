@@ -1,4 +1,4 @@
-package com.example.lmsproject.Controllers;
+package com.example.lmsproject.controllers;
 
 import com.example.lmsproject.models.MyUser;
 import com.example.lmsproject.models.Student;

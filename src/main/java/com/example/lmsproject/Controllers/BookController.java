@@ -1,4 +1,4 @@
-package com.example.lmsproject.Controllers;
+package com.example.lmsproject.controllers;
 
 import com.example.lmsproject.request.BookCreateRequest;
 import com.example.lmsproject.request.BookFilterType;

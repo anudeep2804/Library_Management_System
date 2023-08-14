@@ -1,4 +1,4 @@
-package com.example.lmsproject.Services;
+package com.example.lmsproject.services;
 
 import com.example.lmsproject.models.MyUser;
 import com.example.lmsproject.repositories.MyUserCacheRepository;
