@@ -1,47 +1,53 @@
+# LMS Project (Learning Management System) 📚
 
+The LMS Project provides a comprehensive solution to manage students, books, and their associated transactions, such as issuing and returning books. Built with efficiency in mind, this system integrates features like Spring Security and Redis Caching.
 
-# LMS Project (Learning Management System)
-The LMS Project is an application that aims to manage students, books, and the transactions between them, such as issuing and returning books. It comprises multiple modules, each serving specific functionalities within the system.
+> 💡 **Tip:** Ensure your MySQL and Redis servers are running when starting the application.
 
-I have also implemented Spring Security and Redis for Caching , make sure to up your MySQL and redis servers while starting the application 
+## 📌 Table of Contents
 
-Table of Contents
-Features
-API Endpoints
-Student Controller
-Book Controller
-Transaction Controller
-Features
-Student Management: Allows creation of student profiles and fetching details specific to students and admins.
-Book Management: Enables book creation, updates, and advanced search features with robust filters.
-Transactions: Manages the issuance and return of books between students and the library.
-# API Endpoints
-Student Controller
-Create a Student:
-POST /student: Accepts student details and creates a student profile.
-Get Student Information (for students):
-GET /student: Returns details of the logged-in student.
-Get Student Information (for admins):
-GET /student_for_admin?studentId=<STUDENT_ID>: Allows admins to fetch student details using a student's ID.
-Book Controller
-Create or Update a Book:
-POST /book: Accepts book details and creates or updates a book profile.
+- [Features](#features)
+- [API Endpoints](#api-endpoints)
+  - [Student Controller](#student-controller)
+  - [Book Controller](#book-controller)
+  - [Transaction Controller](#transaction-controller)
+- [License](#license)
 
-Search Books:
-GET /books/search?filter=<FILTER_TYPE>&value=<VALUE>: Search for books based on a specific filter type and value.
+## 🚀 Features
 
-Enhanced Book Search:
-GET /books/search/robust?filter=<FILTER_TYPE>&value=<VALUE>&bookSearchOperationType=<OPERATION_TYPE>: Offers a refined search considering both the filter type and a specific operation type.
+- **Student Management**: Streamlined creation of student profiles with role-based fetching.
+- **Book Management**: Facilitates book creation, updates, and offers advanced search capabilities.
+- **Transactions**: Efficiently handles the process of issuing and returning books.
 
-Advanced Book Search:
-GET /books/search/robust2?filter=<FILTER_LIST>&value=<VALUE_LIST>&bookSearchOperationType=<OPERATION_TYPE_LIST>: Supports search based on multiple filters and operation types.
+## 🛠 API Endpoints
 
-Transaction Controller
-Issue a Book:
-POST /transaction/issue?studentId=<STUDENT_ID>&bookId=<BOOK_ID>: Facilitates the issuance of a book to a student.
+### Student Controller
 
-Return a Book:
-POST /transaction/return?studentId=<STUDENT_ID>&bookId=<BOOK_ID>: Manages the return of a book from a student.
+- **Create a Student**:
+  - `POST /student`
+- **Get Student Info (for students)**:
+  - `GET /student`
+- **Get Student Info (for admins)**:
+  - `GET /student_for_admin?studentId=<STUDENT_ID>`
 
-License
+### Book Controller
+
+- **Create or Update a Book**:
+  - `POST /book`
+- **Search Books**:
+  - `GET /books/search?filter=<FILTER_TYPE>&value=<VALUE>`
+- **Enhanced Book Search**:
+  - `GET /books/search/robust?filter=<FILTER_TYPE>&value=<VALUE>&bookSearchOperationType=<OPERATION_TYPE>`
+- **Advanced Book Search**:
+  - `GET /books/search/robust2?filter=<FILTER_LIST>&value=<VALUE_LIST>&bookSearchOperationType=<OPERATION_TYPE_LIST>`
+
+### Transaction Controller
+
+- **Issue a Book**:
+  - `POST /transaction/issue?studentId=<STUDENT_ID>&bookId=<BOOK_ID>`
+- **Return a Book**:
+  - `POST /transaction/return?studentId=<STUDENT_ID>&bookId=<BOOK_ID>`
+
+## 📜 License
+
 The LMS Project is open-sourced under the MIT license.
