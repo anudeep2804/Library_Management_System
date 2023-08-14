@@ -11,23 +11,31 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+/** This controller handles HTTP requests related to Student operations. */
 @RestController
 public class StudentController {
 
+    // Service for interacting with Student related data.
     @Autowired
     StudentService studentService;
 
+    /** Endpoint to create a new student. Expects a valid request body with student creation details.
+     * @param studentCreateRequest The request payload containing student details.
+     */
     @PostMapping("/student")
     public void createStudent(@Valid @RequestBody StudentCreateRequest studentCreateRequest){
         studentService.create(studentCreateRequest);
     }
 
-    // only for students
+    /** Endpoint to fetch student details for the logged in student.
+     * @return Student Details of the logged-in student.
+     * @throws Exception if the logged-in user is not a student.
+     */
     @GetMapping("/student")
     public Student getStundet() throws Exception {
-        Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         MyUser myUser = (MyUser)authentication.getPrincipal();
-        if(myUser.getStudent()==null){
+        if(myUser.getStudent() == null){
             throw new Exception("User is not a Student");
         }
         myUser.getStudent().getId();
@@ -35,16 +43,18 @@ public class StudentController {
         return studentService.findStudentByStudentId(studentId);
     }
 
-    // only for admins
+    /** Endpoint to fetch student details for admins.
+     * @param studentId The ID of the student to retrieve.
+     * @return Student Details of the specified student.
+     * @throws Exception if the logged-in user is not an admin.
+     */
     @GetMapping("/student_for_admin")
     public Student getStudentForAdmin(@RequestParam("studentId") int studentId) throws Exception {
-        // check the person accessing this API is admin or not
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         MyUser myuser = (MyUser) authentication.getPrincipal();
-        if(myuser.getAdmin()==null){
+        if(myuser.getAdmin() == null){
             throw new Exception(" User is not admin");
         }
-
         return studentService.findStudentByStudentId(studentId);
     }
 }
