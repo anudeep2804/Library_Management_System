@@ -11,7 +11,7 @@ The LMS Project provides a comprehensive solution to manage students, books, and
   - [Student Controller](#student-controller)
   - [Book Controller](#book-controller)
   - [Transaction Controller](#transaction-controller)
-- [License](#license)
+
 
 ## 🚀 Features
 
@@ -48,6 +48,3 @@ The LMS Project provides a comprehensive solution to manage students, books, and
 - **Return a Book**:
   - `POST /transaction/return?studentId=<STUDENT_ID>&bookId=<BOOK_ID>`
 
-## 📜 License
-
-The LMS Project is open-sourced under the MIT license.
